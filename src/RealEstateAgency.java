@@ -18,7 +18,7 @@ public class RealEstateAgency {
     // Construtor da classe RealEstateAgency
     public RealEstateAgency() {
         this.agents = new Agent[10];
-        // this.listings = new Listings(new Listing[250]);
+        this.listings = new Listings();
         this.listingsForSale = 0;
         this.profit = 0.0;
         this.listingsIdx = 0;
@@ -36,11 +36,15 @@ public class RealEstateAgency {
     // Registar um novo imóvel à venda
     public boolean addListing(Agent agent, Listing listing) {
         if (agent.addListing(listing)) {
-            this.listings.getListings()[listingsIdx] = listing;
-            this.agents[listingsIdx] = agent; // Add this line
-            this.listingsForSale++;
-            this.listingsIdx++;
-            return true;
+            if (this.listings != null) {
+                this.listings.getListings()[listingsIdx] = listing;
+                this.agents[listingsIdx] = agent;
+                this.listingsForSale++;
+                this.listingsIdx++;
+                return true;
+            } else {
+                System.out.println("Listings object is null");
+            }
         }
         return false;
     }

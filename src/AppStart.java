@@ -17,7 +17,7 @@ public class AppStart {
         Listing imovel4 = new Listing(4, 1000000, casadado1);
         Listing imovel5 = new Listing(5, 2000000, casadado2);
         Listing imovel6 = new Listing(6, 3000000, casadado3);
-
+        
         // Create more agents
         Agent andrew_tate = new Agent(0.0, 0);
         Agent john_doe = new Agent(0.0, 0);
@@ -36,9 +36,17 @@ public class AppStart {
 
         // Create real estate agency and add agents
         RealEstateAgency rea1 = new RealEstateAgency();
+
+        // Display the real estate agency Listings
+        System.out.println("\n=============== Display Real Estate Agency Listings ===============");
+
         rea1.addAgent(andrew_tate);
         rea1.addAgent(john_doe);
-
+        //Add Listings that belong to Agents in the Real Estate Agency
+        rea1.addListing(andrew_tate, imovel1);
+        rea1.addListing(john_doe, imovel2);
+        
+        rea1.displayListings();
         // Display agent information and listings
         System.out.println("\n=============== Display ===============");
         andrew_tate.display();
